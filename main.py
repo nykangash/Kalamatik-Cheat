@@ -45,7 +45,6 @@ def four_words_maker(letters):
         for j in letters:
             for k in letters:
                 for l in letters:
-
                     tmp = ''
                     tmp += i
                     tmp += j
@@ -87,49 +86,93 @@ for i in range(letters_count):
 
 ######################################################################################################   program main body  
 
-with open("\\Kalamatik\\src\\persian_dict_19k.csv", 'r',encoding='UTF-8-sig') as f:
+with open("src\persian_dict_19k.csv", 'r',encoding='UTF-8-sig') as f:
     while True:        
         line = f.readline()
         if line == '':
             break
         word = line.split(':')
-        if letter_len_needed == 2:
-            if len(word[0]) == letter_len_needed:
-                main_shit =two_words_maker(letters)
-                for i in main_shit:
-                    if word[0] == i :
-                        i = farsi_shaper(i)
-                        print(i)
+        match letter_len_needed:
+            case 2:
+                if len(word[0]) == letter_len_needed:
+                    main_shit = list(set(two_words_maker(letters)))
+                    for i in main_shit:
+                        if word[0] == i :
+                            i = farsi_shaper(i)
+                            print(i)
+                            break
+            case 3:
+                if len(word[0]) == letter_len_needed:
+                    main_shit = list(set(three_words_maker(letters)))
+                    for i in main_shit:
+                        # print(word[0],'====================================================>  ', i)        
+                        if word[0] == i :
+                            p = farsi_shaper(i)
+                            print(p)
+                            main_shit.remove(i)
+                            break
+            case 4:
+                if len(word[0]) == letter_len_needed:
+                    main_shit = list(set(four_words_maker(letters)))
+                    for i in main_shit:
+                        # print(word[0],'====================================================>  ', i)        
+                        if word[0] == i :
+                            p = farsi_shaper(i)
+                            print(p)
+                            main_shit.remove(i)
+                            break
+            case 5:
+                if len(word[0]) == letter_len_needed:
+                    main_shit = list(set(five_words_maker(letters)))
+                    for i in main_shit: 
+                        print(word[0],'====================================================>  ', i)       
+                        if word[0] == i :
+                            i = farsi_shaper(i)
+                            print(i)
+
+                            break
+            case _:
+                print('Bad len, try again !!!')
+                break
+
+
+        # if letter_len_needed == 2:
+        #     if len(word[0]) == letter_len_needed:
+        #         main_shit =two_words_maker(letters)
+        #         for i in main_shit:
+        #             if word[0] == i :
+        #                 i = farsi_shaper(i)
+        #                 print(i)
         
-        elif letter_len_needed == 3 :
-            if len(word[0]) == letter_len_needed:
-                main_shit = three_words_maker(letters)
-                for i in main_shit:        
-                    if word[0] == i :
-                        i = farsi_shaper(i)
-                        print(i)
-                        break
-        elif letter_len_needed == 4 :
-            if len(word[0]) == letter_len_needed:
-                main_shit = four_words_maker(letters)
-                for i in main_shit:        
-                    if word[0] == i :
-                        i = farsi_shaper(i)
-                        print(i)
-                        break
-        elif letter_len_needed == 5 :
-            if len(word[0]) == letter_len_needed:
+        # elif letter_len_needed == 3 :
+        #     if len(word[0]) == letter_len_needed:
+        #         main_shit = three_words_maker(letters)
+        #         for i in main_shit:        
+        #             if word[0] == i :
+        #                 i = farsi_shaper(i)
+        #                 print(i)
+        #                 break
+        # elif letter_len_needed == 4 :
+        #     if len(word[0]) == letter_len_needed:
+        #         main_shit = four_words_maker(letters)
+        #         for i in main_shit:        
+        #             if word[0] == i :
+        #                 i = farsi_shaper(i)
+        #                 print(i)
+        #                 break
+        # elif letter_len_needed == 5 :
+        #     if len(word[0]) == letter_len_needed:
 
-                main_shit = five_words_maker(letters)
-                for i in main_shit:        
-                    if word[0] == i :
-                        i = farsi_shaper(i)
-                        print(i)
-                        break
-            else:
-                continue
+        #         main_shit = five_words_maker(letters)
+        #         for i in main_shit:        
+        #             if word[0] == i :
+        #                 i = farsi_shaper(i)
+        #                 print(i)
+        #                 break
+    #         else:
+    #             continue
 
-        else:
-            print('Wrong input')
-            break
-    ######################################################################################################
+    #     else:
+    #         print('Wrong input')
+    #         break
+    # ######################################################################################################
