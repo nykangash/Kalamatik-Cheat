@@ -45,12 +45,13 @@ def four_words_maker(letters):
         for j in letters:
             for k in letters:
                 for l in letters:
-                    tmp = ''
-                    tmp += i
-                    tmp += j
-                    tmp += k
-                    tmp += l
-                    situ_words.append(tmp)
+                    if i != j and i != k and i != l and j != i and j != k and j != l and k != i and k != j and k != l and l != i and l != k and l != j:
+                        tmp = ''
+                        tmp += i
+                        tmp += j
+                        tmp += k
+                        tmp += l
+                        situ_words.append(tmp)
     
     return situ_words        
 
@@ -63,13 +64,14 @@ def five_words_maker(letters):
             for k in letters:
                 for l in letters:
                     for q in letters:
-                        tmp = ''
-                        tmp += i
-                        tmp += j
-                        tmp += k
-                        tmp += l
-                        tmp += q
-                        situ_words.append(tmp)
+                        if i != j and i != k and i != l and i != q and j != i and j != k and j != l and j != q and k != i and k != j and k != l and k != q and l != i and l != k and l != j and l != q:
+                            tmp = ''
+                            tmp += i
+                            tmp += j
+                            tmp += k
+                            tmp += l
+                            tmp += q
+                            situ_words.append(tmp)
     
     return situ_words        
 
@@ -128,7 +130,6 @@ with open("src\\persian_dict_19k.csv", 'r',encoding='UTF-8-sig') as f:
                             p = farsi_shaper(i)
                             main_shit.remove(i)
                             print(p)
-
                             break
             case _:
                 print('Bad len, try again !!!')
