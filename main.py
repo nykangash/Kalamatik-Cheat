@@ -21,7 +21,7 @@ for i in range(letters_count):
 
 ######################################################################################################   program main body  
 
-with open("src\main_wordlist.csv", 'r',encoding='UTF-8-sig') as f:
+with open("src\\main_wordlist.csv", 'r',encoding='UTF-8-sig') as f:
     while True:        
         line = f.readline()
         if line == '':
